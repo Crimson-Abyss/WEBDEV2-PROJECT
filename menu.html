@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Pastil-an Menu — Order authentic Filipino pastil, rice, sides, drinks, and desserts."
+    />
+    <title>Our Menu | Pastil-an</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+      <a href="index.html" class="navbar-brand">
+        <img
+          src="https://img.icons8.com/color/96/rice-bowl.png"
+          alt="Pastil-an Logo"
+          class="logo"
+        />
+        <span class="brand-name">Pastil-an</span>
+      </a>
+      <div class="navbar-links">
+        <a href="index.html">Home</a>
+        <a href="menu.html" class="active">Menu</a>
+        <a href="index.html#story">Our Story</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+      <div class="navbar-actions">
+        <a href="login.html" class="btn-login">Sign In</a>
+        <a href="#" class="cart-icon" id="cartToggle">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="9" cy="21" r="1" />
+            <circle cx="20" cy="21" r="1" />
+            <path
+              d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+            />
+          </svg>
+          <span class="badge" id="cartBadge">0</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Menu Page -->
+    <div class="menu-page">
+      <div class="menu-container">
+        <!-- Left: Menu Items -->
+        <div>
+          <h2 class="menu-header">Our Menu</h2>
+
+          <!-- Category Tabs -->
+          <div class="category-tabs">
+            <button class="category-tab active" data-category="all">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="3" y="3" width="7" height="7" />
+                <rect x="14" y="3" width="7" height="7" />
+                <rect x="3" y="14" width="7" height="7" />
+                <rect x="14" y="14" width="7" height="7" />
+              </svg>
+            </button>
+            <button class="category-tab" data-category="pastil">pastil</button>
+            <button class="category-tab" data-category="rice">rice</button>
+            <button class="category-tab" data-category="sides">sides</button>
+            <button class="category-tab" data-category="drinks">drinks</button>
+            <button class="category-tab" data-category="desserts">
+              desserts
+            </button>
+          </div>
+
+          <!-- Menu Items List -->
+          <div class="menu-items" id="menuItems">
+            <!-- Items rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Right: Order Panel -->
+        <div class="order-panel">
+          <div class="order-card">
+            <h3>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path
+                  d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+                />
+              </svg>
+              Your Order
+            </h3>
+
+            <div class="cart-items" id="cartItems">
+              <p
+                style="
+                  font-size: 0.85rem;
+                  color: #999;
+                  text-align: center;
+                  padding: 20px 0;
+                "
+              >
+                Your cart is empty
+              </p>
+            </div>
+
+            <div class="order-summary" id="orderSummary" style="display: none">
+              <div class="order-row">
+                <span>Subtotal</span>
+                <span id="subtotal">₱0.00</span>
+              </div>
+              <div class="order-row">
+                <span>Delivery Fee</span>
+                <span>₱20.00</span>
+              </div>
+              <div class="order-row total">
+                <span>Total</span>
+                <span id="total">₱0.00</span>
+              </div>
+            </div>
+
+            <div
+              class="payment-methods"
+              id="paymentMethods"
+              style="display: none"
+            >
+              <h4>Payment Method</h4>
+              <label class="payment-option">
+                <input type="radio" name="payment" value="cod" checked /> Cash
+                on Delivery
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="payment" value="card" /> Credit/Debit
+                Card
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="payment" value="ewallet" /> E-Wallet
+              </label>
+            </div>
+
+            <button class="btn-order" id="placeOrder" onclick="placeOrder()">
+              Place Order
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div>
+          <h4>Pastil-an</h4>
+          <p>Delicious Filipino pastil and more.</p>
+        </div>
+        <div>
+          <h4>Hours</h4>
+          <p>Mon-Fri: 10AM - 9PM<br />Sat-Sun: 11AM - 10PM</p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>Phone: (032) 456-7890<br />Email: info@pastil-an.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2025 Pastil-an. All rights reserved.</div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

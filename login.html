@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Pastil-an</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="auth-page">
+    <!-- Auth Header -->
+    <div class="auth-header">
+      <a href="index.html" class="auth-logo">
+        <img src="https://img.icons8.com/color/96/rice-bowl.png" alt="Logo">
+        <span>Pastil-an</span>
+      </a>
+    </div>
+
+    <!-- Login Form -->
+    <div class="auth-container">
+      <div class="auth-card">
+        <h2>Login</h2>
+
+        <form id="loginForm" onsubmit="handleLogin(event)">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="your@email.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="input-wrapper">
+              <input type="password" id="password" placeholder="••••••••" required>
+              <button type="button" class="toggle-password" onclick="togglePassword('password', this)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-extras">
+            <label class="remember-me">
+              <input type="checkbox"> Remember me
+            </label>
+            <a href="#" class="forgot-link">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="btn-auth">Sign in</button>
+          <p class="auth-drag-text">Drag the button to proceed to an admin account</p>
+        </form>
+
+        <p class="auth-alt">Don't have an account? <a href="register.html">Sign up</a></p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="auth-footer">
+      © 2024 Chibugan Pastil-ero. All rights reserved.
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
