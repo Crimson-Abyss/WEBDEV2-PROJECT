@@ -7,7 +7,7 @@ const menuData = [
       "Tuna flakes sauteed with peppers and spices, wrapped in banana leaves with steamed rice.",
     price: 75,
     category: "pastil",
-    image: "images/tuna-pastil.png",
+    image: "../images/tuna-pastil.png",
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ const menuData = [
       "Tender shredded beef seasoned with local spices, served on rice and wrapped in banana leaves.",
     price: 95,
     category: "pastil",
-    image: "images/beef-pastil.png",
+    image: "../images/beef-pastil.png",
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ const menuData = [
       "Classic Filipino-style chicken, shredded and seasoned with rice in banana leaf wrapping.",
     price: 95,
     category: "pastil",
-    image: "images/chicken-pastil.png",
+    image: "../images/chicken-pastil.png",
   },
   {
     id: 4,
@@ -92,7 +92,7 @@ const menuData = [
       "Mixed Filipino dessert with shaved ice, sweet beans, fruits, and ice cream.",
     price: 85,
     category: "desserts",
-    image: "images/halo-halo.png",
+    image: "../images/halo-halo.png",
   },
   {
     id: 11,
@@ -101,37 +101,14 @@ const menuData = [
       "Creamy Filipino caramel custard made with egg yolks and condensed milk.",
     price: 65,
     category: "desserts",
-    image: "images/leche-flan.png",
+    image: "../images/leche-flan.png",
   },
 ];
+
 
 // ===== CART STATE =====
 let cart = [];
 
-// ===== INITIALIZATION =====
-document.addEventListener("DOMContentLoaded", () => {
-  // Load cart from localStorage
-  const savedCart = localStorage.getItem("pastilan_cart");
-  if (savedCart) {
-    cart = JSON.parse(savedCart);
-  }
-
-  // Render menu if on menu page
-  if (document.getElementById("menuItems")) {
-    renderMenu("all");
-    renderCart();
-    setupCategoryTabs();
-  }
-
-  // Update cart badge everywhere
-  updateCartBadge();
-
-  // Setup scroll animations
-  setupScrollAnimations();
-
-  // Setup navbar scroll effect
-  setupNavbarScroll();
-});
 
 // ===== MENU RENDERING =====
 function renderMenu(category) {
@@ -181,6 +158,7 @@ function renderMenu(category) {
     .join("");
 }
 
+
 // ===== CATEGORY TABS =====
 function setupCategoryTabs() {
   document.querySelectorAll(".category-tab").forEach((tab) => {
@@ -193,6 +171,7 @@ function setupCategoryTabs() {
     });
   });
 }
+
 
 // ===== CART FUNCTIONS =====
 function addToCart(id) {
@@ -253,6 +232,7 @@ function updateCartBadge() {
   });
 }
 
+
 // ===== CART RENDERING =====
 function renderCart() {
   const container = document.getElementById("cartItems");
@@ -298,6 +278,7 @@ function renderCart() {
   if (payment) payment.style.display = "block";
 }
 
+
 // ===== PLACE ORDER =====
 function placeOrder() {
   if (cart.length === 0) {
@@ -307,53 +288,9 @@ function placeOrder() {
   // Clear cart and redirect
   cart = [];
   saveCart();
-  window.location.href = "order-confirmation.html";
+  window.location.href = "../order-confirmation/order-confirmation.html";
 }
 
-// ===== AUTH FUNCTIONS =====
-function handleLogin(e) {
-  e.preventDefault();
-  const email = document.getElementById("email").value;
-  if (email.includes("admin")) {
-    window.location.href = "admin-menu.html";
-  } else {
-    window.location.href = "menu.html";
-  }
-}
-
-function handleRegister(e) {
-  e.preventDefault();
-  alert("Registration successful! Please login.");
-  window.location.href = "login.html";
-}
-
-function togglePassword(inputId, btn) {
-  const input = document.getElementById(inputId);
-  if (input.type === "password") {
-    input.type = "text";
-    btn.innerHTML =
-      '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>';
-  } else {
-    input.type = "password";
-    btn.innerHTML =
-      '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
-  }
-}
-
-// ===== ADMIN FUNCTIONS =====
-function showTab(btn, tab) {
-  // Update tabs
-  document
-    .querySelectorAll(".report-tab")
-    .forEach((t) => t.classList.remove("active"));
-  btn.classList.add("active");
-
-  // Show/hide content
-  document.getElementById("ordersTab").style.display =
-    tab === "orders" ? "block" : "none";
-  document.getElementById("customersTab").style.display =
-    tab === "customers" ? "block" : "none";
-}
 
 // ===== NAVBAR SCROLL =====
 function setupNavbarScroll() {
@@ -368,6 +305,7 @@ function setupNavbarScroll() {
     }
   });
 }
+
 
 // ===== SCROLL ANIMATIONS =====
 function setupScrollAnimations() {
@@ -386,3 +324,19 @@ function setupScrollAnimations() {
 
   elements.forEach((el) => observer.observe(el));
 }
+
+// ===== INITIALIZATION =====
+document.addEventListener("DOMContentLoaded", () => {
+  const savedCart = localStorage.getItem("pastilan_cart");
+  if (savedCart) {
+    cart = JSON.parse(savedCart);
+  }
+  if (document.getElementById("menuItems")) {
+    renderMenu("all");
+    renderCart();
+    setupCategoryTabs();
+  }
+  if(typeof updateCartBadge === 'function') updateCartBadge();
+  if(typeof setupScrollAnimations === 'function') setupScrollAnimations();
+  if(typeof setupNavbarScroll === 'function') setupNavbarScroll();
+});
